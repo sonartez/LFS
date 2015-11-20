@@ -1,0 +1,36 @@
+﻿@model LPS.ProductCategory
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>ProductCategory</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProductCatID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductCatID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProductCatName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductCatName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Active)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Active)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

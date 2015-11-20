@@ -1,0 +1,51 @@
+﻿@model LPS.CarItem
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>CarItem</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CarID, "Car")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("CarID", String.Empty)
+            @Html.ValidationMessageFor(model => model.CarID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProductCatID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ProductCatID)
+            @Html.ValidationMessageFor(model => model.ProductCatID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProductID, "Product")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("ProductID", String.Empty)
+            @Html.ValidationMessageFor(model => model.ProductID)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,524 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="lafien_products_dbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="lafien_products_dbModelStoreContainer">
+          <EntitySet Name="Account" EntityType="lafien_products_dbModel.Store.Account" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Car" EntityType="lafien_products_dbModel.Store.Car" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CarCategory" EntityType="lafien_products_dbModel.Store.CarCategory" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CarItem" EntityType="lafien_products_dbModel.Store.CarItem" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Product" EntityType="lafien_products_dbModel.Store.Product" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ProductCategory" EntityType="lafien_products_dbModel.Store.ProductCategory" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ProductOwnerReference" EntityType="lafien_products_dbModel.Store.ProductOwnerReference" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="lafien_products_dbModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Car_CarCategory" Association="lafien_products_dbModel.Store.FK_Car_CarCategory">
+            <End Role="CarCategory" EntitySet="CarCategory" />
+            <End Role="Car" EntitySet="Car" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CarItem_Car" Association="lafien_products_dbModel.Store.FK_CarItem_Car">
+            <End Role="Car" EntitySet="Car" />
+            <End Role="CarItem" EntitySet="CarItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CarItem_Product" Association="lafien_products_dbModel.Store.FK_CarItem_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="CarItem" EntitySet="CarItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_ProductCategory" Association="lafien_products_dbModel.Store.FK_Product_ProductCategory">
+            <End Role="ProductCategory" EntitySet="ProductCategory" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductOwnerReference_CarCategory" Association="lafien_products_dbModel.Store.FK_ProductOwnerReference_CarCategory">
+            <End Role="CarCategory" EntitySet="CarCategory" />
+            <End Role="ProductOwnerReference" EntitySet="ProductOwnerReference" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductOwnerReference_Product" Association="lafien_products_dbModel.Store.FK_ProductOwnerReference_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductOwnerReference" EntitySet="ProductOwnerReference" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="AccountId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="350" />
+          <Property Name="Password" Type="nvarchar" MaxLength="350" />
+          <Property Name="Email" Type="nvarchar" MaxLength="350" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="350" />
+          <Property Name="AccountType" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="350" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="Car">
+          <Key>
+            <PropertyRef Name="CarID" />
+          </Key>
+          <Property Name="CarID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CarCatID" Type="int" Nullable="false" />
+          <Property Name="Model" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="FromDate" Type="datetime" Nullable="false" />
+          <Property Name="ToDate" Type="datetime" Nullable="false" />
+          <Property Name="Engine" Type="varchar" MaxLength="10" />
+          <Property Name="Body" Type="varchar" MaxLength="50" />
+          <Property Name="EngVol" Type="varchar" MaxLength="50" />
+          <Property Name="EngNo" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CarCategory">
+          <Key>
+            <PropertyRef Name="CatID" />
+          </Key>
+          <Property Name="CatID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CatParentID" Type="int" />
+          <Property Name="CatName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CatLevel" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CarItem">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="CarID" Type="int" Nullable="false" />
+          <Property Name="ProductCatID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="ItemID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="ProductCatID" Type="int" Nullable="false" />
+          <Property Name="Image" Type="nvarchar" MaxLength="250" />
+          <Property Name="ProductName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Specification" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Avtive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductCategory">
+          <Key>
+            <PropertyRef Name="ProductCatID" />
+          </Key>
+          <Property Name="ProductCatID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProductCatName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductOwnerReference">
+          <Key>
+            <PropertyRef Name="RefProductID" />
+          </Key>
+          <Property Name="RefProductID" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ProductID" Type="varchar" MaxLength="30" />
+          <Property Name="CatID" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Car_CarCategory">
+          <End Role="CarCategory" Type="lafien_products_dbModel.Store.CarCategory" Multiplicity="1" />
+          <End Role="Car" Type="lafien_products_dbModel.Store.Car" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarCategory">
+              <PropertyRef Name="CatID" />
+            </Principal>
+            <Dependent Role="Car">
+              <PropertyRef Name="CarCatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CarItem_Car">
+          <End Role="Car" Type="lafien_products_dbModel.Store.Car" Multiplicity="1" />
+          <End Role="CarItem" Type="lafien_products_dbModel.Store.CarItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Car">
+              <PropertyRef Name="CarID" />
+            </Principal>
+            <Dependent Role="CarItem">
+              <PropertyRef Name="CarID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CarItem_Product">
+          <End Role="Product" Type="lafien_products_dbModel.Store.Product" Multiplicity="1" />
+          <End Role="CarItem" Type="lafien_products_dbModel.Store.CarItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="CarItem">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_ProductCategory">
+          <End Role="ProductCategory" Type="lafien_products_dbModel.Store.ProductCategory" Multiplicity="1" />
+          <End Role="Product" Type="lafien_products_dbModel.Store.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductCategory">
+              <PropertyRef Name="ProductCatID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ProductCatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductOwnerReference_CarCategory">
+          <End Role="CarCategory" Type="lafien_products_dbModel.Store.CarCategory" Multiplicity="0..1" />
+          <End Role="ProductOwnerReference" Type="lafien_products_dbModel.Store.ProductOwnerReference" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarCategory">
+              <PropertyRef Name="CatID" />
+            </Principal>
+            <Dependent Role="ProductOwnerReference">
+              <PropertyRef Name="CatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductOwnerReference_Product">
+          <End Role="Product" Type="lafien_products_dbModel.Store.Product" Multiplicity="0..1" />
+          <End Role="ProductOwnerReference" Type="lafien_products_dbModel.Store.ProductOwnerReference" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductOwnerReference">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="lafien_products_dbModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="lafien_products_dbEntities1" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Cars" EntityType="lafien_products_dbModel.Car" />
+          <EntitySet Name="CarCategories" EntityType="lafien_products_dbModel.CarCategory" />
+          <EntitySet Name="CarItems" EntityType="lafien_products_dbModel.CarItem" />
+          <EntitySet Name="Products" EntityType="lafien_products_dbModel.Product" />
+          <EntitySet Name="ProductCategories" EntityType="lafien_products_dbModel.ProductCategory" />
+          <EntitySet Name="ProductOwnerReferences" EntityType="lafien_products_dbModel.ProductOwnerReference" />
+          <EntitySet Name="sysdiagrams" EntityType="lafien_products_dbModel.sysdiagram" />
+          <AssociationSet Name="FK_Car_CarCategory" Association="lafien_products_dbModel.FK_Car_CarCategory">
+            <End Role="CarCategory" EntitySet="CarCategories" />
+            <End Role="Car" EntitySet="Cars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CarItem_Car" Association="lafien_products_dbModel.FK_CarItem_Car">
+            <End Role="Car" EntitySet="Cars" />
+            <End Role="CarItem" EntitySet="CarItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductOwnerReference_CarCategory" Association="lafien_products_dbModel.FK_ProductOwnerReference_CarCategory">
+            <End Role="CarCategory" EntitySet="CarCategories" />
+            <End Role="ProductOwnerReference" EntitySet="ProductOwnerReferences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CarItem_Product" Association="lafien_products_dbModel.FK_CarItem_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="CarItem" EntitySet="CarItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_ProductCategory" Association="lafien_products_dbModel.FK_Product_ProductCategory">
+            <End Role="ProductCategory" EntitySet="ProductCategories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductOwnerReference_Product" Association="lafien_products_dbModel.FK_ProductOwnerReference_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProductOwnerReference" EntitySet="ProductOwnerReferences" />
+          </AssociationSet>
+          <EntitySet Name="Accounts" EntityType="lafien_products_dbModel.Account" />
+        </EntityContainer>
+        <EntityType Name="Car">
+          <Key>
+            <PropertyRef Name="CarID" />
+          </Key>
+          <Property Name="CarID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CarCatID" Type="Int32" Nullable="false" />
+          <Property Name="Model" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FromDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ToDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Engine" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="Body" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="EngVol" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="EngNo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="CarCategory" Relationship="lafien_products_dbModel.FK_Car_CarCategory" FromRole="Car" ToRole="CarCategory" />
+          <NavigationProperty Name="CarItems" Relationship="lafien_products_dbModel.FK_CarItem_Car" FromRole="Car" ToRole="CarItem" />
+        </EntityType>
+        <EntityType Name="CarCategory">
+          <Key>
+            <PropertyRef Name="CatID" />
+          </Key>
+          <Property Name="CatID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CatParentID" Type="Int32" />
+          <Property Name="CatName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CatLevel" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cars" Relationship="lafien_products_dbModel.FK_Car_CarCategory" FromRole="CarCategory" ToRole="Car" />
+          <NavigationProperty Name="ProductOwnerReferences" Relationship="lafien_products_dbModel.FK_ProductOwnerReference_CarCategory" FromRole="CarCategory" ToRole="ProductOwnerReference" />
+        </EntityType>
+        <EntityType Name="CarItem">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="CarID" Type="Int32" Nullable="false" />
+          <Property Name="ProductCatID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="ItemID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Car" Relationship="lafien_products_dbModel.FK_CarItem_Car" FromRole="CarItem" ToRole="Car" />
+          <NavigationProperty Name="Product" Relationship="lafien_products_dbModel.FK_CarItem_Product" FromRole="CarItem" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="ProductCatID" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Specification" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="Avtive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CarItems" Relationship="lafien_products_dbModel.FK_CarItem_Product" FromRole="Product" ToRole="CarItem" />
+          <NavigationProperty Name="ProductCategory" Relationship="lafien_products_dbModel.FK_Product_ProductCategory" FromRole="Product" ToRole="ProductCategory" />
+          <NavigationProperty Name="ProductOwnerReferences" Relationship="lafien_products_dbModel.FK_ProductOwnerReference_Product" FromRole="Product" ToRole="ProductOwnerReference" />
+        </EntityType>
+        <EntityType Name="ProductCategory">
+          <Key>
+            <PropertyRef Name="ProductCatID" />
+          </Key>
+          <Property Name="ProductCatID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductCatName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Products" Relationship="lafien_products_dbModel.FK_Product_ProductCategory" FromRole="ProductCategory" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="ProductOwnerReference">
+          <Key>
+            <PropertyRef Name="RefProductID" />
+          </Key>
+          <Property Name="RefProductID" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ProductID" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="CatID" Type="Int32" />
+          <NavigationProperty Name="CarCategory" Relationship="lafien_products_dbModel.FK_ProductOwnerReference_CarCategory" FromRole="ProductOwnerReference" ToRole="CarCategory" />
+          <NavigationProperty Name="Product" Relationship="lafien_products_dbModel.FK_ProductOwnerReference_Product" FromRole="ProductOwnerReference" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Car_CarCategory">
+          <End Role="CarCategory" Type="lafien_products_dbModel.CarCategory" Multiplicity="1" />
+          <End Role="Car" Type="lafien_products_dbModel.Car" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarCategory">
+              <PropertyRef Name="CatID" />
+            </Principal>
+            <Dependent Role="Car">
+              <PropertyRef Name="CarCatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CarItem_Car">
+          <End Role="Car" Type="lafien_products_dbModel.Car" Multiplicity="1" />
+          <End Role="CarItem" Type="lafien_products_dbModel.CarItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Car">
+              <PropertyRef Name="CarID" />
+            </Principal>
+            <Dependent Role="CarItem">
+              <PropertyRef Name="CarID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductOwnerReference_CarCategory">
+          <End Role="CarCategory" Type="lafien_products_dbModel.CarCategory" Multiplicity="0..1" />
+          <End Role="ProductOwnerReference" Type="lafien_products_dbModel.ProductOwnerReference" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CarCategory">
+              <PropertyRef Name="CatID" />
+            </Principal>
+            <Dependent Role="ProductOwnerReference">
+              <PropertyRef Name="CatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CarItem_Product">
+          <End Role="Product" Type="lafien_products_dbModel.Product" Multiplicity="1" />
+          <End Role="CarItem" Type="lafien_products_dbModel.CarItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="CarItem">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_ProductCategory">
+          <End Role="ProductCategory" Type="lafien_products_dbModel.ProductCategory" Multiplicity="1" />
+          <End Role="Product" Type="lafien_products_dbModel.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductCategory">
+              <PropertyRef Name="ProductCatID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="ProductCatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductOwnerReference_Product">
+          <End Role="Product" Type="lafien_products_dbModel.Product" Multiplicity="0..1" />
+          <End Role="ProductOwnerReference" Type="lafien_products_dbModel.ProductOwnerReference" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductOwnerReference">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Type="Int32" Name="AccountId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UserName" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Password" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FullName" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AccountType" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CreateBy" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreateDate" Precision="3" />
+          <Property Type="DateTime" Name="ModifyDate" Precision="3" />
+          <Property Type="Boolean" Name="Active" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="lafien_products_dbModelStoreContainer" CdmEntityContainer="lafien_products_dbEntities1">
+          <EntitySetMapping Name="Cars">
+            <EntityTypeMapping TypeName="lafien_products_dbModel.Car">
+              <MappingFragment StoreEntitySet="Car">
+                <ScalarProperty Name="CarID" ColumnName="CarID" />
+                <ScalarProperty Name="CarCatID" ColumnName="CarCatID" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="Engine" ColumnName="Engine" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="EngVol" ColumnName="EngVol" />
+                <ScalarProperty Name="EngNo" ColumnName="EngNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CarCategories">
+            <EntityTypeMapping TypeName="lafien_products_dbModel.CarCategory">
+              <MappingFragment StoreEntitySet="CarCategory">
+                <ScalarProperty Name="CatID" ColumnName="CatID" />
+                <ScalarProperty Name="CatParentID" ColumnName="CatParentID" />
+                <ScalarProperty Name="CatName" ColumnName="CatName" />
+                <ScalarProperty Name="CatLevel" ColumnName="CatLevel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CarItems">
+            <EntityTypeMapping TypeName="lafien_products_dbModel.CarItem">
+              <MappingFragment StoreEntitySet="CarItem">
+                <ScalarProperty Name="CarID" ColumnName="CarID" />
+                <ScalarProperty Name="ProductCatID" ColumnName="ProductCatID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="lafien_products_dbModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ProductCatID" ColumnName="ProductCatID" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Specification" ColumnName="Specification" />
+                <ScalarProperty Name="Avtive" ColumnName="Avtive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductCategories">
+            <EntityTypeMapping TypeName="lafien_products_dbModel.ProductCategory">
+              <MappingFragment StoreEntitySet="ProductCategory">
+                <ScalarProperty Name="ProductCatID" ColumnName="ProductCatID" />
+                <ScalarProperty Name="ProductCatName" ColumnName="ProductCatName" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductOwnerReferences">
+            <EntityTypeMapping TypeName="lafien_products_dbModel.ProductOwnerReference">
+              <MappingFragment StoreEntitySet="ProductOwnerReference">
+                <ScalarProperty Name="RefProductID" ColumnName="RefProductID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="CatID" ColumnName="CatID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="lafien_products_dbModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="lafien_products_dbModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

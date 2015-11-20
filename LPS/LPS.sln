@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LPS", "LPS\LPS.csproj", "{F0BA8CFA-D653-4E98-9911-C07E2FEE4178}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{6E48D9E9-6322-4CA0-86E4-31A53545E2E1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F0BA8CFA-D653-4E98-9911-C07E2FEE4178}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0BA8CFA-D653-4E98-9911-C07E2FEE4178}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0BA8CFA-D653-4E98-9911-C07E2FEE4178}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0BA8CFA-D653-4E98-9911-C07E2FEE4178}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E48D9E9-6322-4CA0-86E4-31A53545E2E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E48D9E9-6322-4CA0-86E4-31A53545E2E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E48D9E9-6322-4CA0-86E4-31A53545E2E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E48D9E9-6322-4CA0-86E4-31A53545E2E1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

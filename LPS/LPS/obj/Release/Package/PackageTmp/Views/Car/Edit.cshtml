@@ -1,0 +1,93 @@
+﻿@model LPS.Car
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Car</legend>
+
+        @Html.HiddenFor(model => model.CarID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CarCatID, "CarCategory")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("CarCatID", String.Empty)
+            @Html.ValidationMessageFor(model => model.CarCatID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Model)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Model)
+            @Html.ValidationMessageFor(model => model.Model)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FromDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FromDate)
+            @Html.ValidationMessageFor(model => model.FromDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ToDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ToDate)
+            @Html.ValidationMessageFor(model => model.ToDate)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Engine)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Engine)
+            @Html.ValidationMessageFor(model => model.Engine)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Body)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Body)
+            @Html.ValidationMessageFor(model => model.Body)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EngVol)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EngVol)
+            @Html.ValidationMessageFor(model => model.EngVol)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EngNo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EngNo)
+            @Html.ValidationMessageFor(model => model.EngNo)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

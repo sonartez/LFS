@@ -1,0 +1,55 @@
+﻿@model LPS.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Product</legend>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProductID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductID)
+    </div>
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProductCategory.ProductCatName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductCategory.ProductCatName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Image)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Image)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ProductName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ProductName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Specification)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Specification)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Avtive)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Avtive)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ProductID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

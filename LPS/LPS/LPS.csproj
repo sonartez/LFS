@@ -1,0 +1,674 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F0BA8CFA-D653-4E98-9911-C07E2FEE4178}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LPS</RootNamespace>
+    <AssemblyName>LPS</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit">
+      <HintPath>..\packages\AjaxControlToolkit.7.1213\lib\45\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="AjaxMin">
+      <HintPath>..\packages\AjaxMin.4.97.4951.28483\lib\net40\AjaxMin.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\HtmlAgilityPack.1.4.6\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack-PCL">
+      <HintPath>..\packages\HtmlAgilityPack-PCL.1.4.6\lib\HtmlAgilityPack-PCL.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Edm, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.Edm.5.2.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.OData.5.2.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Configuration">
+      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.1.8.0.0\lib\net35-full\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage">
+      <HintPath>..\packages\WindowsAzure.Storage.2.1.0.3\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Services.Client" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Spatial, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\System.Spatial.5.2.0\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.1\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account.cs">
+      <DependentUpon>LafienModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Common.cs" />
+    <Compile Include="HashEncryption.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Car.cs">
+      <DependentUpon>LafienModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CarCategory.cs">
+      <DependentUpon>LafienModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CarItem.cs">
+      <DependentUpon>LafienModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Cars.aspx.cs">
+      <DependentUpon>Cars.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cars.aspx.designer.cs">
+      <DependentUpon>Cars.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CMS\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CMS\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\CarController.cs" />
+    <Compile Include="Controllers\CarItemController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductCategoryController.cs" />
+    <Compile Include="Controllers\CarCategoryController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="LafienModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LafienModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LafienModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LafienModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LafienModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LafienModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="LPSMaster.Master.cs">
+      <DependentUpon>LPSMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LPSMaster.Master.designer.cs">
+      <DependentUpon>LPSMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CarBrandEdit.aspx.cs">
+      <DependentUpon>CarBrandEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\CarBrandEdit.aspx.designer.cs">
+      <DependentUpon>CarBrandEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CarBrands.aspx.cs">
+      <DependentUpon>CarBrands.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\CarBrands.aspx.designer.cs">
+      <DependentUpon>CarBrands.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CarDelete.aspx.cs">
+      <DependentUpon>CarDelete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\CarDelete.aspx.designer.cs">
+      <DependentUpon>CarDelete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CarEdit.aspx.cs">
+      <DependentUpon>CarEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\CarEdit.aspx.designer.cs">
+      <DependentUpon>CarEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Cars.aspx.cs">
+      <DependentUpon>Cars.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Cars.aspx.designer.cs">
+      <DependentUpon>Cars.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UserEdit.aspx.cs">
+      <DependentUpon>UserEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\UserEdit.aspx.designer.cs">
+      <DependentUpon>UserEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Lafien.Master.cs">
+      <DependentUpon>Lafien.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Lafien.Master.designer.cs">
+      <DependentUpon>Lafien.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ProductCategory.aspx.cs">
+      <DependentUpon>ProductCategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ProductCategory.aspx.designer.cs">
+      <DependentUpon>ProductCategory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ProductCategoryEdit.aspx.cs">
+      <DependentUpon>ProductCategoryEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ProductCategoryEdit.aspx.designer.cs">
+      <DependentUpon>ProductCategoryEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ProductEdit.aspx.cs">
+      <DependentUpon>ProductEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ProductEdit.aspx.designer.cs">
+      <DependentUpon>ProductEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Products.aspx.cs">
+      <DependentUpon>Products.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Products.aspx.designer.cs">
+      <DependentUpon>Products.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UserControls\CtrlUploadImageAjax.ascx.cs">
+      <DependentUpon>CtrlUploadImageAjax.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\UserControls\CtrlUploadImageAjax.ascx.designer.cs">
+      <DependentUpon>CtrlUploadImageAjax.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Users.aspx.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Users.aspx.designer.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Product.aspx.cs">
+      <DependentUpon>Product.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Product.aspx.designer.cs">
+      <DependentUpon>Product.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>LafienModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductCategory.cs">
+      <DependentUpon>LafienModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductOwnerReference.cs">
+      <DependentUpon>LafienModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>LafienModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Cars.aspx" />
+    <Content Include="CMS\Default.aspx" />
+    <Content Include="Content\NoImage-Currently.gif" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\signature.png" />
+    <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Pages\CarBrandEdit.aspx" />
+    <Content Include="Pages\CarBrands.aspx" />
+    <Content Include="Pages\CarDelete.aspx" />
+    <Content Include="Pages\CarEdit.aspx" />
+    <Content Include="Pages\Cars.aspx" />
+    <Content Include="Pages\Logout.aspx" />
+    <Content Include="Pages\UserEdit.aspx" />
+    <Content Include="Pages\css\bootstrap-dropdown-checkbox.css" />
+    <Content Include="Pages\css\bootstrap-multiselect.css" />
+    <Content Include="Pages\css\bootstrap.css" />
+    <Content Include="Pages\css\bootstrap.min.css" />
+    <Content Include="Pages\css\plugins\morris.css" />
+    <Content Include="Pages\css\sb-admin.css" />
+    <Content Include="Pages\Default.aspx" />
+    <Content Include="Pages\font-awesome-4.1.0\css\font-awesome.css" />
+    <Content Include="Pages\font-awesome-4.1.0\css\font-awesome.min.css" />
+    <Content Include="Pages\font-awesome-4.1.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Pages\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Pages\js\bootstrap-dropdown-checkbox.js" />
+    <Content Include="Pages\js\bootstrap-dropdown-checkbox.min.js" />
+    <Content Include="Pages\js\bootstrap-multiselect.js" />
+    <Content Include="Pages\js\jquery-1.6.1.min.js" />
+    <Content Include="Pages\js\jquery-ui-1.8.13.custom.min.js" />
+    <Content Include="Pages\js\ajaxupload.3.5.js" />
+    <Content Include="Pages\js\bootstrap.js" />
+    <Content Include="Pages\js\bootstrap.min.js" />
+    <Content Include="Pages\js\jquery.js" />
+    <Content Include="Pages\js\lafien.js" />
+    <Content Include="Pages\js\plugins\flot\excanvas.min.js" />
+    <Content Include="Pages\js\plugins\flot\flot-data.js" />
+    <Content Include="Pages\js\plugins\flot\jquery.flot.js" />
+    <Content Include="Pages\js\plugins\flot\jquery.flot.pie.js" />
+    <Content Include="Pages\js\plugins\flot\jquery.flot.resize.js" />
+    <Content Include="Pages\js\plugins\flot\jquery.flot.tooltip.min.js" />
+    <Content Include="Pages\js\plugins\morris\morris-data.js" />
+    <Content Include="Pages\js\plugins\morris\morris.js" />
+    <Content Include="Pages\js\plugins\morris\morris.min.js" />
+    <Content Include="Pages\js\plugins\morris\raphael.min.js" />
+    <Content Include="Pages\Lafien.Master" />
+    <Content Include="Pages\font-awesome-4.1.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Pages\font-awesome-4.1.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Pages\font-awesome-4.1.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Pages\font-awesome-4.1.0\fonts\FontAwesome.otf" />
+    <Content Include="Pages\font-awesome-4.1.0\less\bordered-pulled.less" />
+    <Content Include="Pages\font-awesome-4.1.0\less\core.less" />
+    <Content Include="Pages\font-awesome-4.1.0\less\fixed-width.less" />
+    <Content Include="Pages\font-awesome-4.1.0\less\font-awesome.less" />
+    <Content Include="Pages\font-awesome-4.1.0\less\icons.less" />
+    <Content Include="Pages\font-awesome-4.1.0\less\larger.less" />
+    <Content Include="Pages\font-awesome-4.1.0\less\list.less" />
+    <Content Include="Pages\font-awesome-4.1.0\less\mixins.less" />
+    <Content Include="Pages\font-awesome-4.1.0\less\path.less" />
+    <Content Include="Pages\font-awesome-4.1.0\less\rotated-flipped.less" />
+    <Content Include="Pages\font-awesome-4.1.0\less\spinning.less" />
+    <Content Include="Pages\font-awesome-4.1.0\less\stacked.less" />
+    <Content Include="Pages\font-awesome-4.1.0\less\variables.less" />
+    <Content Include="Pages\font-awesome-4.1.0\scss\font-awesome.scss" />
+    <Content Include="Pages\font-awesome-4.1.0\scss\_bordered-pulled.scss" />
+    <Content Include="Pages\font-awesome-4.1.0\scss\_core.scss" />
+    <Content Include="Pages\font-awesome-4.1.0\scss\_fixed-width.scss" />
+    <Content Include="Pages\font-awesome-4.1.0\scss\_icons.scss" />
+    <Content Include="Pages\font-awesome-4.1.0\scss\_larger.scss" />
+    <Content Include="Pages\font-awesome-4.1.0\scss\_list.scss" />
+    <Content Include="Pages\font-awesome-4.1.0\scss\_mixins.scss" />
+    <Content Include="Pages\font-awesome-4.1.0\scss\_path.scss" />
+    <Content Include="Pages\font-awesome-4.1.0\scss\_rotated-flipped.scss" />
+    <Content Include="Pages\font-awesome-4.1.0\scss\_spinning.scss" />
+    <Content Include="Pages\font-awesome-4.1.0\scss\_stacked.scss" />
+    <Content Include="Pages\font-awesome-4.1.0\scss\_variables.scss" />
+    <Content Include="Pages\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Pages\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Pages\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Pages\Resources_Fancybox\blank.gif" />
+    <Content Include="Pages\Resources_Fancybox\fancybox-x.png" />
+    <Content Include="Pages\Resources_Fancybox\fancybox-y.png" />
+    <Content Include="Pages\Resources_Fancybox\fancybox.png" />
+    <Content Include="Pages\Resources_Fancybox\fancy_close.png" />
+    <Content Include="Pages\Resources_Fancybox\fancy_loading.png" />
+    <Content Include="Pages\Resources_Fancybox\fancy_nav_left.png" />
+    <Content Include="Pages\Resources_Fancybox\fancy_nav_right.png" />
+    <Content Include="Pages\Resources_Fancybox\fancy_shadow_e.png" />
+    <Content Include="Pages\Resources_Fancybox\fancy_shadow_n.png" />
+    <Content Include="Pages\Resources_Fancybox\fancy_shadow_ne.png" />
+    <Content Include="Pages\Resources_Fancybox\fancy_shadow_nw.png" />
+    <Content Include="Pages\Resources_Fancybox\fancy_shadow_s.png" />
+    <Content Include="Pages\Resources_Fancybox\fancy_shadow_se.png" />
+    <Content Include="Pages\Resources_Fancybox\fancy_shadow_sw.png" />
+    <Content Include="Pages\Resources_Fancybox\fancy_shadow_w.png" />
+    <Content Include="Pages\Resources_Fancybox\fancy_title_left.png" />
+    <Content Include="Pages\Resources_Fancybox\fancy_title_main.png" />
+    <Content Include="Pages\Resources_Fancybox\fancy_title_over.png" />
+    <Content Include="Pages\Resources_Fancybox\fancy_title_right.png" />
+    <Content Include="Pages\Resources_Fancybox\jquery.easing-1.3.pack.js" />
+    <Content Include="Pages\Resources_Fancybox\jquery.fancybox-1.3.4.css" />
+    <Content Include="Pages\Resources_Fancybox\jquery.fancybox-1.3.4.js" />
+    <Content Include="Pages\Resources_Fancybox\jquery.fancybox-1.3.4.pack.js" />
+    <Content Include="Pages\Resources_Fancybox\jquery.mousewheel-3.0.4.pack.js" />
+    <Content Include="Pages\css\smoothness-1.8.13\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Pages\css\smoothness-1.8.13\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Pages\css\smoothness-1.8.13\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Pages\css\smoothness-1.8.13\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Pages\css\smoothness-1.8.13\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Pages\css\smoothness-1.8.13\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Pages\css\smoothness-1.8.13\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Pages\css\smoothness-1.8.13\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Pages\css\smoothness-1.8.13\images\ui-icons_222222_256x240.png" />
+    <Content Include="Pages\css\smoothness-1.8.13\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Pages\css\smoothness-1.8.13\images\ui-icons_454545_256x240.png" />
+    <Content Include="Pages\css\smoothness-1.8.13\images\ui-icons_888888_256x240.png" />
+    <Content Include="Pages\css\smoothness-1.8.13\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Pages\css\smoothness-1.8.13\jquery-ui-1.8.13.custom.css" />
+    <Content Include="Pages\css\smoothness\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Pages\css\smoothness\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Pages\css\smoothness\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Pages\css\smoothness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Pages\css\smoothness\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Pages\css\smoothness\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Pages\css\smoothness\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Pages\css\smoothness\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Pages\css\smoothness\images\ui-icons_222222_256x240.png" />
+    <Content Include="Pages\css\smoothness\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Pages\css\smoothness\images\ui-icons_454545_256x240.png" />
+    <Content Include="Pages\css\smoothness\images\ui-icons_888888_256x240.png" />
+    <Content Include="Pages\css\smoothness\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Pages\css\smoothness\jquery-ui-1.7.3.custom.css" />
+    <Content Include="Pages\css\smoothness\jquery-ui-1.8.4.custom.css" />
+    <Content Include="Pages\js\ui.dropdownchecklist-1.4-min.js" />
+    <Content Include="Pages\css\ui.dropdownchecklist.standalone.css" />
+    <Content Include="Pages\css\ui.dropdownchecklist.themeroller.css" />
+    <Content Include="Pages\UserControls\DeleteFileHandler.ashx" />
+    <Content Include="Pages\UserControls\UploadFileHandler.ashx" />
+    <Content Include="Pages\Resources_Fancybox\Thumbs.db" />
+    <EntityDeploy Include="LafienModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LafienModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="LafienModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LafienModel.edmx</DependentUpon>
+      <LastGenOutput>LafienModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="LafienModel.edmx.diagram">
+      <DependentUpon>LafienModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="LafienModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LafienModel.edmx</DependentUpon>
+      <LastGenOutput>LafienModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="LPSMaster.Master" />
+    <None Include="Properties\PublishProfiles\LPS 1.0.pubxml" />
+    <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Pages\ProductCategory.aspx" />
+    <Content Include="Pages\ProductCategoryEdit.aspx" />
+    <Content Include="Pages\ProductEdit.aspx" />
+    <Content Include="Pages\Products.aspx" />
+    <Content Include="Pages\UserControls\playerv4.swf" />
+    <Content Include="Pages\UserControls\CtrlUploadImageAjax.ascx" />
+    <Content Include="Pages\Users.aspx" />
+    <Content Include="Product.aspx" />
+    <Content Include="Scripts\jquery-1.7.1.js" />
+    <Content Include="Scripts\jquery-1.7.1.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-2.1.0.debug.js" />
+    <Content Include="Scripts\knockout-2.1.0.js" />
+    <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\ProductCategory\Index.cshtml" />
+    <Content Include="Views\ProductCategory\Details.cshtml" />
+    <Content Include="Views\ProductCategory\Create.cshtml" />
+    <Content Include="Views\ProductCategory\Edit.cshtml" />
+    <Content Include="Views\ProductCategory\Delete.cshtml" />
+    <Content Include="Views\CarCategory\Index.cshtml" />
+    <Content Include="Views\CarCategory\Details.cshtml" />
+    <Content Include="Views\CarCategory\Create.cshtml" />
+    <Content Include="Views\CarCategory\Edit.cshtml" />
+    <Content Include="Views\CarCategory\Delete.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
+    <Content Include="Views\Product\Create.cshtml" />
+    <Content Include="Views\Product\Edit.cshtml" />
+    <Content Include="Views\Product\Delete.cshtml" />
+    <Content Include="Views\Car\Index.cshtml" />
+    <Content Include="Views\Car\Details.cshtml" />
+    <Content Include="Views\Car\Create.cshtml" />
+    <Content Include="Views\Car\Edit.cshtml" />
+    <Content Include="Views\Car\Delete.cshtml" />
+    <Content Include="Views\CarItem\Index.cshtml" />
+    <Content Include="Views\CarItem\Details.cshtml" />
+    <Content Include="Views\CarItem\Create.cshtml" />
+    <Content Include="Views\CarItem\Edit.cshtml" />
+    <Content Include="Views\CarItem\Delete.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Code\" />
+    <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
+    <Folder Include="Upload\Products\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:3873/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

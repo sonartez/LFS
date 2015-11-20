@@ -1,0 +1,43 @@
+﻿@model LPS.CarCategory
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>CarCategory</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CatID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CatID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CatParentID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CatParentID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CatName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CatName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CatLevel)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CatLevel)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

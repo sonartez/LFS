@@ -1,0 +1,398 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="LPSMaster.master.cs" Inherits="LPS.LPSMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head id="Head1" runat="server">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>LAFIEN : Products Search Engine</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="Pages/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="Pages/css/sb-admin.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="Pages/css/plugins/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="Pages/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- jQuery -->
+    <script src="Pages/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="Pages/js/bootstrap.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <%--    <script src="js/plugins/morris/raphael.min.js"></script>
+    <script src="js/plugins/morris/morris.min.js"></script>
+    <script src="js/plugins/morris/morris-data.js"></script>--%>
+
+    <!-- Lafien JS-->
+    <link rel="stylesheet" type="text/css" href="Pages/css/bootstrap-multiselect.css" />
+
+    <script type="text/javascript" src="<%=Page.ResolveUrl("Pages/js/bootstrap-multiselect.js")%>"></script>
+    <script>
+        var selectedCarItems = [];
+        $(document).ready(function () {
+
+            //includeSelectAllOption: true,
+            //allSelectedText: 'No option left ...'
+
+            $("#ddlBrand").multiselect(
+                {
+                    disableIfEmpty: true,
+                    buttonWidth: '100%',
+                    maxHeight: 400,
+                    enableCaseInsensitiveFiltering: true,
+                    onChange: function (option, checked, select) {
+                        // call for class ddl
+
+                        var url = "CarCategory/GetCarBrandByParent/" + option[0].value;
+
+                        $.getJSON(url, function () {
+                            console.log("success");
+                        })
+                           .done(function (data) {
+
+                               var options = buildItems(data);
+
+
+                               $('#ddlClass').multiselect('dataprovider', options);
+                               if (options.length > 0)
+                                   $('#ddlClass').multiselect('enable');
+                               else {
+                                   $('#ddlClass').multiselect('disable');
+                                   $('#ddlYear').multiselect('disable');
+                                   $('#ddlEngine').multiselect('disable');
+                                   $('#ddlBody').multiselect('disable');
+                               }
+                               console.log(options);
+                           })
+                           .fail(function () {
+                               $('#ddlClass').multiselect('dataprovider', []);
+                               $('#ddlClass').multiselect('disable');
+                               $('#ddlYear').multiselect('dataprovider', []);
+                               $('#ddlYear').multiselect('disable');
+                               $('#ddlEngine').multiselect('dataprovider', []);
+                               $('#ddlBody').multiselect('dataprovider', []);
+                               $('#ddlEngine').multiselect('disable');
+                               $('#ddlBody').multiselect('disable');
+                           })
+                           .always(function () {
+                               console.log("complete");
+                           });
+                    }
+
+                });
+            $("#ddlClass").multiselect({
+                disableIfEmpty: true,
+                buttonWidth: '100%',
+                maxHeight: 400,
+                enableCaseInsensitiveFiltering: true,
+                includeSelectAllOption: true,
+                onDropdownHidden: function (event) {
+                    // call for class ddl
+
+                    // Get selected options.
+                    var selectedOptions = $('#ddlClass option:selected');
+
+                    var param = "";
+                    for (var i = 0; i < selectedOptions.length; i++) {
+                        param += selectedOptions[i].value + ';';
+                    }
+                    var url = "CarCategory/GetCarYears/" + param;
+                    $.getJSON(url, function () {
+                        console.log("success");
+                    })
+                           .done(function (data) {
+                               var options = buildItems(data);
+                               $('#ddlYear').multiselect('dataprovider', options);
+                               if (options.length > 0)
+                                   $('#ddlYear').multiselect('enable');
+                               else {
+                                   $('#ddlYear').multiselect('disable');
+
+                                   $('#ddlEngine').multiselect('disable');
+                                   $('#ddlBody').multiselect('disable');
+                               }
+                               console.log(options);
+                           })
+                           .fail(function () {
+                               $('#ddlYear').multiselect('dataprovider', []);
+                               $('#ddlYear').multiselect('disable');
+                               $('#ddlEngine').multiselect('dataprovider', []);
+                               $('#ddlBody').multiselect('dataprovider', []);
+                               $('#ddlEngine').multiselect('disable');
+                               $('#ddlBody').multiselect('disable');
+                           })
+                           .always(function () {
+                               console.log("complete");
+                           });
+                }
+            });
+           
+            $("#ddlYear").multiselect({
+                disableIfEmpty: true,
+                buttonWidth: '100%',
+                maxHeight: 400,
+                enableCaseInsensitiveFiltering: true,
+                includeSelectAllOption: true,
+                onDropdownHidden: function (event) {
+                    // call for class ddl
+
+                    // Get selected options.
+                    var selectedOptions = $('#ddlClass option:selected');
+
+                    var paramClass = "";
+                    for (var i = 0; i < selectedOptions.length; i++) {
+                        paramClass += selectedOptions[i].value + ';';
+                    }
+
+                    selectedOptions = $('#ddlYear option:selected');
+
+                    var paramY = "";
+                    for (var i = 0; i < selectedOptions.length; i++) {
+                        paramY += selectedOptions[i].value + ';';
+                    }
+
+
+
+                    var url = "CarCategory/GetCarEngineAndBody/" + paramClass+"$"+paramY;
+                    $.getJSON(url, function () {
+                        console.log("success");
+                    })
+                           .done(function (data) {
+                               var options = buildItems(data.body);
+                               $('#ddlBody').multiselect('dataprovider', options);
+                               if (options.length > 0)
+                                   $('#ddlBody').multiselect('enable');
+                               else
+                                   $('#ddlBody').multiselect('disable');
+                               options = buildItems(data.engine);
+                               $('#ddlEngine').multiselect('dataprovider', options);
+                               if (options.length > 0)
+                                   $('#ddlEngine').multiselect('enable');
+                               else
+                                   $('#ddlEngine').multiselect('disable');
+                               //console.log(options);
+                           })
+                           .fail(function () {
+                               $('#ddlEngine').multiselect('dataprovider', []);
+                               $('#ddlBody').multiselect('dataprovider', []);
+                               $('#ddlEngine').multiselect('disable');
+                               $('#ddlBody').multiselect('disable');
+                           })
+                           .always(function () {
+                               console.log("complete");
+                           });
+                }
+            });
+            $("#ddlEngine").multiselect({
+                disableIfEmpty: true,
+                buttonWidth: '100%',
+                maxHeight: 400,
+                enableCaseInsensitiveFiltering: true,
+                includeSelectAllOption: true
+
+            });
+            $("#ddlBody").multiselect({
+                disableIfEmpty: true,
+                buttonWidth: '100%',
+                maxHeight: 400,
+                enableCaseInsensitiveFiltering: true,
+                includeSelectAllOption: true
+
+            });
+
+        });
+
+        function buildItems(data) {
+            var options = []
+            for (var i = 0; i < data.length; i++) {
+                options.push({ label: data[i].name, title: data[i].name, value: data[i].value })
+            }
+            return options;
+        }
+
+        function tab1() {
+            $(".lps-tab-2").removeClass("active");
+            $(".lps-tab-1").addClass("active");
+            $("#form-filter").hide();
+            $("#form-search").show();
+            console.log("asas");
+        }
+        function tab2() {
+            $(".lps-tab-1").removeClass("active");
+            $(".lps-tab-2").addClass("active");
+            $("#form-search").hide();
+            $("#form-filter").show();
+            console.log("asas");
+        }
+
+        function search() {
+            var key = $("#txtSearchKey").val();
+            location.href = "Product.aspx?key=" + key;
+        }
+
+        function goFilter() {
+            var strParam = "";
+            var selectedOptions = $('#ddlClass option:selected');
+
+            var paramClass = "";
+            for (var i = 0; i < selectedOptions.length; i++) {
+                paramClass += selectedOptions[i].value + ';';
+            }
+
+            selectedOptions = $('#ddlYear option:selected');
+
+            var paramY = "";
+            for (var i = 0; i < selectedOptions.length; i++) {
+                paramY += selectedOptions[i].value + ';';
+            }
+
+            selectedOptions = $('#ddlEngine option:selected');
+
+            var paramEngine = "";
+            for (var i = 0; i < selectedOptions.length; i++) {
+                paramEngine += selectedOptions[i].value + ';';
+            }
+
+            selectedOptions = $('#ddlBody option:selected');
+
+            var paramBody = "";
+            for (var i = 0; i < selectedOptions.length; i++) {
+                paramBody += selectedOptions[i].value + ';';
+            }
+
+            strParam = paramClass + "$" + paramY + "$" + paramEngine + "$" + paramBody;
+
+            location.href = "Cars.aspx?key=" + strParam;
+
+        }
+
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body style="margin-top: 10px">
+    <form id="form1" runat="server">
+        <ajaxToolkit:ToolkitScriptManager ID="ScriptManager1" runat="server"></ajaxToolkit:ToolkitScriptManager>
+        <div id="xwrapper">
+            <div id="view-wrapper">
+                <div class="container-fluid">
+
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <img src="http://www.lafien.co.kr/cont_kr/top/20130225093343_logo_en.png" />
+                        </div>
+                    </div>
+                    <div class="row" id="SearchForm">
+                        <div class="col-lg-12" style="padding-left: 30px; padding-right: 30px">
+                            <ul class="nav nav-tabs">
+                                <li role="presentation" class="lps-tab-1 active"><a href="javascript:void(0)" onclick="tab1()"><b>PRODUCT NO </b></a></li>
+                                <li role="presentation" class="lps-tab-2"><a href="javascript:void(0)" onclick="tab2()"><b>APPLICATION</b></a></li>
+                            </ul>
+                            <div class="panel panel-default" style="margin-top: -2px;" id="form-search">
+                                <!-- Default panel contents -->
+
+                                <div class="panel-body" style="padding-left: 0px; padding-right: 0px">
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="input-group">
+                                            <input type="text" id="txtSearchKey" required placeholder="Product Code" class="form-control">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" onclick="search()" type="button">Search</button>
+                                            </span>
+                                        </div>
+                                        <!-- /input-group -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default" style="display: none; margin-top: -2px;" id="form-filter">
+                                <!-- Default panel contents -->
+
+                                <div class="panel-body">
+                                    <div class="col-lg-3 col-md-4">
+                                        <div class="form-group">
+                                            <label>Brand</label>
+                                            <select id="ddlBrand" runat="server" enableviewstate="true" class="ddl form-control">
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-lg-3 col-md-4">
+                                        <div class="form-group">
+                                            <label>Class</label>
+                                            <select id="ddlClass" multiple="multiple" class="ddl form-control">
+                                            </select>
+                                        </div>
+                                    </div>
+                                   
+                                    <div class="col-lg-2 col-md-4">
+                                        <div class="form-group">
+                                            <label>Years</label>
+                                            <select id="ddlYear" multiple="multiple" class="ddl form-control">
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-4">
+                                        <div class="form-group">
+                                            <label>Engine</label>
+                                            <select id="ddlEngine" multiple="multiple" class="ddl form-control">
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-4 ">
+                                        <div class="form-group">
+                                            <label>Body</label>
+                                            <select id="ddlBody" multiple="multiple" class="ddl form-control">
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-4 text-right">
+
+                                        <span class="btn-group">
+                                            <button class="btn btn-primary" onclick="goFilter()" style="width:120px" type="button">Filter</button>
+                                        </span>
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+            <!-- /#page-wrapper -->
+            <div class="row">
+                <div class="col-lg-12 text-center" style="color: #FFF; padding: 5px;">
+                   <b> LADO FILTER ENGINEERING CO., LTD, </b><br />
+            875-1, JINAN DONG, HWASEONG-SI, KYUNGGI-DO 445-390, KOREA / TEL: +82-31-374-0163 / FAX: +82-31-374-0164
+2014(c) LADO FILTER ENGINEERING Co.,Ltd. All rights reserved.
+                </div>
+            </div>
+        </div>
+        <!-- /#wrapper -->
+    </form>
+</body>
+</html>

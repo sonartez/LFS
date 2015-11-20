@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6a92be220f8e40e7aa15351adff211f6" Name="Diagram1">
+        <EntityTypeShape EntityType="lafien_products_dbModel.Car" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="lafien_products_dbModel.CarCategory" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="lafien_products_dbModel.CarItem" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="lafien_products_dbModel.Product" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="lafien_products_dbModel.ProductCategory" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="lafien_products_dbModel.ProductOwnerReference" Width="1.875" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="lafien_products_dbModel.sysdiagram" Width="1.5" PointX="5.75" PointY="7" IsExpanded="true" />
+        <AssociationConnector Association="lafien_products_dbModel.FK_Car_CarCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="lafien_products_dbModel.FK_CarItem_Car" ManuallyRouted="false" />
+        <AssociationConnector Association="lafien_products_dbModel.FK_ProductOwnerReference_CarCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="lafien_products_dbModel.FK_CarItem_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="lafien_products_dbModel.FK_Product_ProductCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="lafien_products_dbModel.FK_ProductOwnerReference_Product" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="lafien_products_dbModel.Account" Width="1.5" PointX="5.4774826250399844" PointY="10.461181705101012" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

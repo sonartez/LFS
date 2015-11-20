@@ -1,0 +1,71 @@
+﻿@model LPS.Car
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Car</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CarCategory.CatName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CarCategory.CatName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Model)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Model)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FromDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FromDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ToDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ToDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Engine)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Engine)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Body)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Body)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EngVol)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EngVol)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EngNo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EngNo)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.CarID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

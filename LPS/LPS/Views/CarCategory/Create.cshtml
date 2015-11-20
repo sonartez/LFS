@@ -1,0 +1,59 @@
+﻿@model LPS.CarCategory
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>CarCategory</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CatID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CatID)
+            @Html.ValidationMessageFor(model => model.CatID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CatParentID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CatParentID)
+            @Html.ValidationMessageFor(model => model.CatParentID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CatName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CatName)
+            @Html.ValidationMessageFor(model => model.CatName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CatLevel)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CatLevel)
+            @Html.ValidationMessageFor(model => model.CatLevel)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
